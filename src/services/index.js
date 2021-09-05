@@ -38,4 +38,6 @@ class SwapiServer {
     }
 }
 
+
+
 export default SwapiServer;

@@ -1,0 +1,32 @@
+.random-planets{
+    margin-bottom: 30px;
+}
+
+.random-planets>.container {
+    background-color: #333333;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.div-description>div>h2 {
+    font-size: 45px;
+    margin: 0;
+}
+
+.div-description>div>div {
+    margin-top: 15px;
+}
+.div-description>div>div>div{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 20px;
+}
+
+.div-description>div>div>div:not(:last-child) {
+    border-bottom: 1px solid #676666;
+}
+
+
+.random-planets .img-block>img {
+    border-radius: 15px;
+}
