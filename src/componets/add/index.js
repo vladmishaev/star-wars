@@ -9,6 +9,8 @@ import PresonD from "../person-detalis";
 const Add = () => {
     return (
         <>
+        <div className="bag-stars"></div>
+        <div className="animation-stats"></div>
             <Header />
             <RandomPlanets />
             <div className="container">

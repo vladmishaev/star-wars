@@ -1,35 +1,91 @@
-import React from "react";
+import React, { Component } from "react";
+import Spiner from "../spiner";
+import Error from "../error-indicator";
+
 import './index.css';
+import SwapiServer from "../../services";
 
 
-const RandomPlanets = () => {
+class RandomPlanets extends Component {
+    constructor() {
+        super();
+        this.getResource = new SwapiServer();
 
-    return (
+        this.state = {
+            planet: {},
+            loading: true,
+            error: false
+        };
 
-        <div className="random-planets">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-4">
-                        <div className="img-block">
-                            <img className="img-fluid" src="https://hi-news.ru/wp-content/uploads/2015/04/Mars1.jpg" />
-                        </div>
-                    </div>
-                    <div className="col-lg-auto div-description">
-                        <div>
-                            <h2>Kashyyy</h2>
-                            <div>
-                                <div>Population:9534424</div>
-                                <div>Ratation Period:26</div>
-                                <div>Diameter:12765</div>
-                            </div>
-                        </div>
+        this.updatePlanet()
+    }
+
+    onPlanetLoaded = (planet) => {
+        this.setState({ planet, loading: false })
+    }
+
+    onError = () => {
+        this.setState({ error: true })
+    }
+
+
+    updatePlanet() {
+        const id = Math.floor(Math.random() * (21 - 2) + 2);
+
+        this.getResource.getPlanet(id)
+            .then((data) => {
+                this.onPlanetLoaded(data);
+            })
+            .catch(this.onError);
+
+    }
+
+    render() {
+        const { planet, loading, error } = this.state;
+
+        const classRow = loading || error ? 'justify-content-center' : null;
+
+        let content = loading ? <Spiner /> : <PlanetView planet={planet} />;
+        content = error ? <Error /> : content;
+
+
+        return (
+            <div className="random-planets">
+                <div className="container">
+                    <div className={`row ${classRow}`}>
+                        {content}
                     </div>
                 </div>
             </div>
-        </div>
+        )
 
+    }
+
+}
+
+
+const PlanetView = ({ planet }) => {
+    const { id, name, population, ratationPeriod, diameter } = planet;
+
+    return (
+        <>
+            <div className="col-lg-3">
+                <div className="img-block">
+                    <img className="img-fluid" src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
+                </div>
+            </div>
+            <div className="col-lg-auto div-description">
+                <div>
+                    <h2>{name}</h2>
+                    <div>
+                        <div>Population - {population}</div>
+                        <div>Ratation Period - {ratationPeriod}</div>
+                        <div>Diameter - {diameter}</div>
+                    </div>
+                </div>
+            </div>
+        </>
     )
-
 }
 
 export default RandomPlanets;

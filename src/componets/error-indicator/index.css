@@ -1,0 +1,18 @@
+.error-indicator .img-error-box>img{
+    width: 150px;
+    
+}
+.img-error-box{
+    text-align: center;
+}
+.error-indicator>div>h3{
+    font-size: 30px;
+    color: #deb235;
+    margin-bottom: 0;
+    text-align: center;
+}
+.error-indicator>div>p{
+    margin: 0;
+    font-size: 20px;
+    color: #deb235;
+}
