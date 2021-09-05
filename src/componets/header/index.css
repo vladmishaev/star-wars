@@ -5,7 +5,13 @@
 .header .title>h2 {
     font-size: 50px;
     margin: 0;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FFEE58;
+    text-align: center;
+    line-height: 45px;
 }
+
 .header nav>ul{
     padding-left: 0;
     display: flex;
@@ -18,5 +24,5 @@
     font-size: 25px;
 }
 .header nav>ul>.activ{
-    color: #bb1717;
+    color: #FFEE58;
 }

@@ -8,7 +8,7 @@ const Header = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 title">
-                        <h2>Star DB</h2>
+                        <h2>STAR WARS</h2>
                     </div>
                     <div className="col-lg-9">
                         <nav>
