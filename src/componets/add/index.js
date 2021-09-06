@@ -3,7 +3,7 @@ import './index.css';
 
 import Header from "../header";
 import RandomPlanets from "../random-planets";
-import ListEl from "../item-list";
+import ListEl from "../list";
 import PresonD from "../person-detalis";
 
 const Add = () => {
