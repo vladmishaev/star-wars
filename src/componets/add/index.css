@@ -15,6 +15,7 @@ body {
     background-color: #333333;
     padding: 15px;
     border-radius: 6px;
+    border: 1px solid #676666;
 }
 
 .item-detalis .item-detalis-discr {
