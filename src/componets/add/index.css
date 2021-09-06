@@ -45,9 +45,12 @@ body {
     padding-right: 0;
 }
 
-.item-detalis img {
+.item-detalis .img-block img {
     width: 150px;
     border-radius: 15px;
+}
+.item-detalis .spiner-content >img{
+    width: 198px;
 }
 
 .bag-stars {

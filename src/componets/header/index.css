@@ -2,6 +2,15 @@
     margin-top: 10px;
     margin-bottom: 50px;
 }
+.header .nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .title{
+    padding-top: 33px;
+
+}
 
 .header .title>h2 {
     font-size: 50px;

@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css';
-import gif from './error.gif';
+import gif from './error2.gif';
 
 const Error = () => {
     return (
