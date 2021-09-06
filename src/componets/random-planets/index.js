@@ -24,7 +24,7 @@ class RandomPlanets extends Component {
         setInterval(this.updatePlanet, 10000)
     }
 
-    
+
 
     onPlanetLoaded = (planet) => {
         this.setState({ planet, loading: false })
@@ -49,7 +49,7 @@ class RandomPlanets extends Component {
     render() {
         const { planet, loading, error } = this.state;
 
-        const classRow = loading || error ? 'justify-content-center' : null;
+
 
         let content = loading ? <Spiner /> : <PlanetView planet={planet} />;
         content = error ? <Error /> : content;
@@ -58,7 +58,7 @@ class RandomPlanets extends Component {
         return (
             <div className="random-planets">
                 <div className="container">
-                    <div className={`row ${classRow}`}>
+                    <div className="row" >
                         {content}
                     </div>
                 </div>

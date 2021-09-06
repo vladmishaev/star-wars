@@ -8,9 +8,15 @@
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 20px;
-
+    cursor: pointer;
+    transition: all 0.5s ease;
 }
-.list-items-content>ul>li:not(:last-child){
+
+.list-items-content>ul>li:hover {
+    background-color: #676666;
+}
+
+.list-items-content>ul>li:not(:last-child) {
     border-bottom: 1px solid #676666;
 }
 

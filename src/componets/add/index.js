@@ -8,9 +8,21 @@ import PresonD from "../person-detalis";
 
 class Add extends Component {
 
+    state = {
+        person: null
+    }
+
+
+    renderDetalisItem = (id) => {
+        this.setState({
+            person: id
+        })
+
+    }
 
 
     render() {
+        const { person } = this.state;
         return (
             <>
                 <div className="bag-stars"></div>
@@ -19,10 +31,10 @@ class Add extends Component {
                 <RandomPlanets />
                 <div className="container">
                     <div className="row">
-                        <ListEl />
+                        <ListEl funcRender={this.renderDetalisItem} />
                         <div className="col-lg-6 item-detalis-col">
                             <div className="item-detalis">
-                                <PresonD />
+                                <PresonD personId={person} />
                             </div>
                         </div>
                     </div>
