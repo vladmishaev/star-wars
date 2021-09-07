@@ -71,13 +71,13 @@ class RandomPlanets extends Component {
 
 
 const PlanetView = ({ planet }) => {
-    const { id, name, population, ratationPeriod, diameter } = planet;
+    const { id, name, population, ratationPeriod, diameter,img } = planet;
 
     return (
         <>
             <div className="col-lg-3">
                 <div className="img-block">
-                    <img className="img-fluid" src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
+                    <img className="img-fluid" src={img} />
                 </div>
             </div>
             <div className="col-lg-auto div-description">

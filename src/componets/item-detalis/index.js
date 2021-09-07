@@ -5,9 +5,19 @@ import Error from "../error-indicator";
 
 import './index.css';
 
-class PresonD extends Component {
+
+const Record = ({ item, label, field }) => {
+    return (
+        <div>{label} : {item[field]}</div>
+    )
+
+}
+
+export { Record };
+
+class ItemD extends Component {
     state = {
-        person: null,
+        item: null,
         louding: false,
         error: false
     }
@@ -16,9 +26,9 @@ class PresonD extends Component {
 
 
     componentDidUpdate(prevProps) {
-        if (prevProps.personId !== this.props.personId) {
+        if (prevProps.itemId !== this.props.itemId) {
             this.setState({ louding: true })
-            this.getPerson(this.props.personId)
+            this.getItem()
         }
     }
 
@@ -27,10 +37,13 @@ class PresonD extends Component {
     }
 
 
-    getPerson(id) {
-        this.getResource.getPerson(id)
-            .then((person) => {
-                this.setState({ person, louding: false })
+    getItem() {
+        const { itemId, getData } = this.props;
+
+        getData(itemId)
+            .then((item) => {
+
+                this.setState({ item, louding: false })
             })
             .catch(() => {
                 this.setState({ error: true })
@@ -39,7 +52,7 @@ class PresonD extends Component {
 
 
     render() {
-        const { person, louding, error } = this.state;
+        const { item, louding, error } = this.state;
 
         if (error) {
             return (
@@ -49,9 +62,9 @@ class PresonD extends Component {
 
 
 
-        if (person === null && louding === false) {
+        if (item === null && louding === false) {
             return (
-                <div className='null-person'> Please select a character!!!</div>
+                <div className='item-person'> Please select a character!!!</div>
             )
         }
 
@@ -65,16 +78,16 @@ class PresonD extends Component {
         return (
             <>
                 <div className="img-block">
-                    <img className="img-fluid" src={`https://starwars-visualguide.com/assets/img/characters/${person.id}.jpg`} />
+                    <img className="img-fluid" src={item.img} />
                 </div>
 
                 <div className="item-detalis-discr">
                     <div>
-                        <h2>{person.name}</h2>
+                        <h2>{item.name}</h2>
                         <div className="detailed-descr">
-                            <div>Gender : {person.gender}</div>
-                            <div>Eye Color : {person.eyeColor}</div>
-                            <div>Birth Year : {person.birthYear}</div>
+                            {React.Children.map(this.props.children, (child) => {
+                                return React.cloneElement(child, { item });
+                            })}
                         </div>
                     </div>
                 </div>
@@ -85,4 +98,4 @@ class PresonD extends Component {
 
 }
 
-export default PresonD;
+export default ItemD;
