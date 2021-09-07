@@ -5,7 +5,7 @@ import Error from "../error-indicator";
 
 import './index.css';
 
-class PresonD extends Component {
+class ItemD extends Component {
     state = {
         person: null,
         louding: false,
@@ -16,9 +16,9 @@ class PresonD extends Component {
 
 
     componentDidUpdate(prevProps) {
-        if (prevProps.personId !== this.props.personId) {
+        if (prevProps.itemId !== this.props.itemId) {
             this.setState({ louding: true })
-            this.getPerson(this.props.personId)
+            this.getItem(this.props.itemId)
         }
     }
 
@@ -27,7 +27,7 @@ class PresonD extends Component {
     }
 
 
-    getPerson(id) {
+    getItem(id) {
         this.getResource.getPerson(id)
             .then((person) => {
                 this.setState({ person, louding: false })
@@ -85,4 +85,4 @@ class PresonD extends Component {
 
 }
 
-export default PresonD;
+export default ItemD;

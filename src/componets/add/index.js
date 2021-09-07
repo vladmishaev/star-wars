@@ -5,7 +5,7 @@ import Header from "../header";
 import RandomPlanets from "../random-planets";
 import ListEl from "../list";
 import SwapiServer from '../../services';
-import PresonD from "../person-detalis";
+import ItemD from "../item-detalis";
 
 class Add extends Component {
 
@@ -60,7 +60,7 @@ class Add extends Component {
                             getItems={this.getFunForList()} />
                         <div className="col-lg-6 item-detalis-col">
                             <div className="item-detalis">
-                                <PresonD personId={itemRender} />
+                                <ItemD itemId={itemRender} />
                             </div>
                         </div>
                     </div>
