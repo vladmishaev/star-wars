@@ -5,9 +5,12 @@ import Header from "../header";
 import RandomPlanets from "../random-planets";
 import ListEl from "../list";
 import SwapiServer from '../../services';
-import ItemD from "../item-detalis";
+import ItemD, { Record } from "../item-detalis";
 
-class Add extends Component {
+
+
+
+class App extends Component {
 
     getResource = new SwapiServer();
 
@@ -17,9 +20,9 @@ class Add extends Component {
     }
 
     settingGetResList = {
-        ['people']: () => this.getResource.getAllPeople(),
-        ['starShips']: () => this.getResource.getAllStarships(),
-        ['planets']: () => this.getResource.getAllPlanets()
+        ['people']: this.getResource.getAllPeople,
+        ['starShips']: this.getResource.getAllStarships,
+        ['planets']: this.getResource.getAllPlanets
 
     }
 
@@ -32,7 +35,8 @@ class Add extends Component {
 
     setNavHeader = (id) => {
         this.setState({
-            navHeader: id
+            navHeader: id,
+
         })
     }
 
@@ -45,10 +49,28 @@ class Add extends Component {
     }
 
 
+
+
+
     render() {
         const { itemRender, navHeader } = this.state;
+
+        const personDetalis = (
+            <ItemD itemId={itemRender}
+                getData={this.getResource.getPerson} />
+
+        );
+        const starshipDetalis = (
+            <ItemD itemId={itemRender}
+                getData={this.getResource.getStarship} >
+
+                <Record field='length' label='Length' />
+                <Record field='model' label='Model' />
+            </ItemD>
+        );
         return (
             <>
+
                 <div className="bag-stars"></div>
                 <div className="animation-stats"></div>
                 <Header navActiv={navHeader}
@@ -60,11 +82,12 @@ class Add extends Component {
                             getItems={this.getFunForList()} />
                         <div className="col-lg-6 item-detalis-col">
                             <div className="item-detalis">
-                                <ItemD itemId={itemRender} />
+                                {starshipDetalis}
                             </div>
                         </div>
                     </div>
                 </div>
+
             </>
         )
 
@@ -72,4 +95,4 @@ class Add extends Component {
 
 };
 
-export default Add;
+export default App;

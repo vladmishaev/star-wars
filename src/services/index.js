@@ -2,9 +2,10 @@ class SwapiServer {
 
     constructor(apiBase = 'https://swapi.dev/api') {
         this.apiBase = apiBase;
+        this.ingBase = 'https://starwars-visualguide.com/assets/img';
     }
 
-    async getResource(url) {
+    getResource = async (url) => {
         const res = await fetch(`${this.apiBase}${url}`);
         if (!res.ok) {
             throw new Error(`Could not fetch:${this.apiBase}${url}\n received:${res.status}`);
@@ -13,37 +14,37 @@ class SwapiServer {
         return bady;
     }
 
-    async getAllPeople() {
+    getAllPeople = async () => {
         const res = await this.getResource('/people/');
         return res.results.map(person => {
             return this._tranformPerson(person);
         });
     }
-    async getPerson(id) {
+    getPerson = async (id) => {
         const person = await this.getResource(`/people/${id}/`);
         return this._tranformPerson(person);
     }
 
-    async getAllPlanets() {
+    getAllPlanets = async () => {
         const res = await this.getResource('/planets/');
         return res.results.map(planet => {
-            return this._tranformPerson(planet);
+            return this._tranformPlanet(planet);
         });
     }
-    async getPlanet(id) {
+    getPlanet = async (id) => {
         const planet = await this.getResource(`/planets/${id}/`);
         return this._tranformPlanet(planet);
     }
 
-    async getAllStarships() {
+    getAllStarships = async () => {
         const res = await this.getResource('/starships/');
         return res.results.map(ships => {
-            return this._tranformPerson(ships);
+            return this._tranformStarship(ships);
         });
     }
-    getStarship(id) {
-        const ship = this.getResource(`/starships/${id}/`);
-        return this._tranformPlanet(ship);
+    getStarship = async (id) => {
+        const ship = await this.getResource(`/starships/${id}/`);
+        return this._tranformStarship(ship);
     }
 
     _extractId(url) {
@@ -54,23 +55,40 @@ class SwapiServer {
 
 
     _tranformPerson({ name, gender, eye_color: eyeColor, birth_year: birthYear, url }) {
+        const idE = this._extractId(url);
         return {
-            id: this._extractId(url),
+            id: idE,
             name,
             gender,
             eyeColor,
-            birthYear
+            birthYear,
+            img:`${this.ingBase}/characters/${idE}.jpg`
         }
 
     }
 
-    _tranformPlanet({ name, population, rotation_period: ratationPeriod, diameter, url }) {
+    _tranformStarship({ name, length, model, crew, url }) {
+        const idE = this._extractId(url);
         return {
-            id: this._extractId(url),
+            id: idE,
+            name,
+            length,
+            model,
+            crew,
+            img:`${this.ingBase}/starships/${idE}.jpg`
+
+        }
+    }
+
+    _tranformPlanet({ name, population, rotation_period: ratationPeriod, diameter, url }) {
+        const idE = this._extractId(url);
+        return {
+            id: idE,
             name,
             population,
             ratationPeriod,
-            diameter
+            diameter,
+            img:`${this.ingBase}/planets/${idE}.jpg`
         }
 
     }
