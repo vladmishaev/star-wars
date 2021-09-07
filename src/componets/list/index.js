@@ -1,22 +1,32 @@
 import React, { Component } from "react";
-import SwapiServer from '../../services';
 import Spiner from '../spiner';
 import Error from '../error-indicator'
 import ItemList from "../item-list";
 import './index.css';
 
 class ListEl extends Component {
-    getResource = new SwapiServer();
+
     state = {
         items: null,
 
     }
 
+    serverRequest() {
+        this.props.getItems()
+            .then(item => {
+                this.setState({ items: item })
+            });
+    }
+
     componentDidMount() {
-        return this.getResource.getAllPeople()
-            .then(person => {
-                this.setState({ items:person })
-            })
+        this.serverRequest();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.getItems !== this.props.getItems) {
+            this.setState({ items: null });
+            this.serverRequest();
+        }
     }
 
     renderItemElement(array) {
