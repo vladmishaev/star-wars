@@ -8,23 +8,25 @@ class ListEl extends Component {
 
     state = {
         items: null,
+        louding: false
 
     }
 
     serverRequest() {
         this.props.getItems()
             .then(item => {
-                this.setState({ items: item })
+                this.setState({ items: item, louding: false })
             });
     }
 
     componentDidMount() {
+        this.setState({ louding: true })
         this.serverRequest();
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.getItems !== this.props.getItems) {
-            this.setState({ items: null });
+            this.setState({ louding: true });
             this.serverRequest();
         }
     }
@@ -42,9 +44,10 @@ class ListEl extends Component {
     }
 
     render() {
-        const { items } = this.state;
 
-        let content = items ? this.renderItemElement(items) : <Spiner />;
+        const { items, louding } = this.state;
+        
+        let content = (louding || items === null) ? <Spiner /> : this.renderItemElement(items);
 
 
         return (
@@ -53,7 +56,6 @@ class ListEl extends Component {
                     <ul>
                         {content}
                     </ul>
-
                 </div>
             </div>
         )
