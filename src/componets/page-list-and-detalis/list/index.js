@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Spiner from '../spiner';
-import Error from '../error-indicator'
-import ItemList from "../item-list";
+import Spiner from '../../spiner';
+import Error from '../../error-indicator';
 import './index.css';
 
 
@@ -35,7 +34,7 @@ class ListEl extends Component {
         return array.map(({ name, id }) => {
             return (
                 <li key={id} onClick={() => { funcRender(id) }}>
-                    <ItemList name={name} />
+                    <span>{name}</span>
                 </li>
             )
         })

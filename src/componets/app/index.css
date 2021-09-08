@@ -10,7 +10,7 @@ body {
     height: auto;
 }
 
-.item-detalis {
+/* .item-detalis {
     display: flex;
     background-color: #333333;
     padding: 15px;
@@ -51,7 +51,7 @@ body {
 }
 .item-detalis .spiner-content >img{
     width: 198px;
-}
+} */
 
 .bag-stars {
     background: url(http://www.script-tutorials.com/demos/360/images/stars.png) top center #000;
