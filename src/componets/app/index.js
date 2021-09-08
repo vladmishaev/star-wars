@@ -3,13 +3,9 @@ import './index.css';
 
 import Header from "../header";
 import RandomPlanets from "../random-planets";
-
 import SwapiServer from '../../services';
 
 import PagePerson from "../page-list-and-detalis/page-person";
-
-
-
 
 class App extends Component {
 
@@ -30,7 +26,6 @@ class App extends Component {
     render() {
         const { navHeader } = this.state;
 
-
         return (
             <>
 
@@ -39,8 +34,6 @@ class App extends Component {
                 <Header navActiv={navHeader}
                     funRenderLi={this.setNavHeader} />
                 <RandomPlanets />
-
-
                 <PagePerson />
 
             </>

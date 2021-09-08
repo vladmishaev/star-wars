@@ -1,58 +1,28 @@
-import React, { Component } from "react";
-import Row from "../row";
-import ListEl from "../list";
+import carcassPage from "../hoc-carcass-page";
 import SwapiServer from "../../../services";
-
-import ItemD, { Record } from "../item-detalis";
-
-
 import './index.css';
 
 
-class PagePerson extends Component {
+const { getPerson, getAllPeople } = new SwapiServer();
 
-    getResource = new SwapiServer();
-
-    state = {
-        itemRender: null
+const arrSeting = [
+    {
+        field: 'gender',
+        label: 'Gender'
+    },
+    {
+        field: 'eyeColor',
+        label: 'Eye-Color'
     }
+];
 
-    renderDetalisItem = (id) => {
-        this.setState({
-            itemRender: id
-        })
-
-    }
-
-    renderList() {
-        return (
-            <ListEl funcRender={this.renderDetalisItem}
-                getItems={this.getResource.getAllPeople} />
-        )
-
-    }
-
-    renderItemDitels() {
-        return (
-            <ItemD itemId={this.state.itemRender}
-                getData={this.getResource.getPerson} >
-
-                <Record field='gender' label='Gender' />
-                <Record field='eyeColor' label='Eye-Color' />
-            </ItemD>
-        )
-    }
-
-
-    render() {
-
-        return (
-            <Row left={this.renderList()} right={this.renderItemDitels()} />
-        );
-
-
-    }
+const objSeting = {
+    getItem: getPerson,
+    getListItem: getAllPeople
 }
+
+
+const PagePerson = carcassPage(arrSeting, objSeting);
 
 export default PagePerson;
 

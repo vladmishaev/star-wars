@@ -10,48 +10,6 @@ body {
     height: auto;
 }
 
-/* .item-detalis {
-    display: flex;
-    background-color: #333333;
-    padding: 15px;
-    border-radius: 6px;
-    border: 1px solid #676666;
-}
-
-.item-detalis .item-detalis-discr {
-    margin-left: 20px;
-}
-
-.item-detalis .item-detalis-discr h2 {
-    margin: 0;
-}
-
-.item-detalis .item-detalis-discr .detailed-descr {
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-.item-detalis .item-detalis-discr .detailed-descr>div {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 15px;
-}
-
-.item-detalis .item-detalis-discr .detailed-descr>div:not(:last-child) {
-    border-bottom: 1px solid #676666;
-}
-
-.item-detalis-col {
-    padding-right: 0;
-}
-
-.item-detalis .img-block img {
-    width: 150px;
-    border-radius: 15px;
-}
-.item-detalis .spiner-content >img{
-    width: 198px;
-} */
 
 .bag-stars {
     background: url(http://www.script-tutorials.com/demos/360/images/stars.png) top center #000;
