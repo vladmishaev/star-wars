@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Spiner from '../spiner';
-import Error from '../error-indicator'
-import ItemList from "../item-list";
+import Spiner from '../../spiner';
+import Error from '../../error-indicator';
 import './index.css';
 
 
@@ -9,23 +8,25 @@ class ListEl extends Component {
 
     state = {
         items: null,
+        louding: false
 
     }
 
     serverRequest() {
         this.props.getItems()
             .then(item => {
-                this.setState({ items: item })
+                this.setState({ items: item, louding: false })
             });
     }
 
     componentDidMount() {
+        this.setState({ louding: true })
         this.serverRequest();
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.getItems !== this.props.getItems) {
-            this.setState({ items: null });
+            this.setState({ louding: true });
             this.serverRequest();
         }
     }
@@ -35,7 +36,7 @@ class ListEl extends Component {
         return array.map(({ name, id }) => {
             return (
                 <li key={id} onClick={() => { funcRender(id) }}>
-                    <ItemList name={name} />
+                    <span>{name}</span>
                 </li>
             )
         })
@@ -43,9 +44,10 @@ class ListEl extends Component {
     }
 
     render() {
-        const { items } = this.state;
 
-        let content = items ? this.renderItemElement(items) : <Spiner />;
+        const { items, louding } = this.state;
+        
+        let content = (louding || items === null) ? <Spiner /> : this.renderItemElement(items);
 
 
         return (
@@ -54,7 +56,6 @@ class ListEl extends Component {
                     <ul>
                         {content}
                     </ul>
-
                 </div>
             </div>
         )

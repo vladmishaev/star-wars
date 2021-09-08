@@ -52,7 +52,7 @@ class RandomPlanets extends Component {
 
 
         let content = loading ? <Spiner /> : <PlanetView planet={planet} />;
-        content = error ? <Error /> : content;
+            content = error ? <Error /> : content;
 
 
         return (

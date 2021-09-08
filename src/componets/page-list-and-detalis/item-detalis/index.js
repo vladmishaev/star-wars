@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SwapiServer from "../../services";
-import Spiner from "../spiner";
-import Error from "../error-indicator";
+import SwapiServer from "../../../services";
+import Spiner from "../../spiner";
+import Error from "../../error-indicator";
 
 import './index.css';
 
