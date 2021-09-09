@@ -6,7 +6,7 @@ const Error = () => {
     return (
         <div className="error-indicator">
             <div className="img-error-box">
-                <img src={gif} />
+                <img src={gif} alt="error"/>
             </div>
             <div>
                 <h3 className="boom">BOOM!</h3>

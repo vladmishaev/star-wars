@@ -59,14 +59,14 @@ class ItemD extends Component {
                 <Error />
             )
         }
-
-
+        
 
         if (item === null && louding === false) {
             return (
                 <div className='item-person'> Please select a character!!!</div>
             )
         }
+
 
         if (louding) {
             return (
@@ -78,7 +78,7 @@ class ItemD extends Component {
         return (
             <>
                 <div className="img-block">
-                    <img className="img-fluid" src={item.img} />
+                    <img className="img-fluid" src={item.img}  alt="icon-item"/>
                 </div>
 
                 <div className="item-detalis-discr">
