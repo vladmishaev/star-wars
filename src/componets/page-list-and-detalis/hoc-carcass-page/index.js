@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+
 import Row from "../row";
 import ListEl from "../list";
 import SwapiServer from "../../../services";
 import ItemD, { Record } from "../item-detalis";
+
+
 
 
 const carcassPage = (arrRecordProps, objSwapiReq) => {
@@ -49,5 +52,6 @@ const carcassPage = (arrRecordProps, objSwapiReq) => {
 
     }
 }
+
 
 export default carcassPage;
