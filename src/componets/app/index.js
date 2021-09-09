@@ -28,14 +28,13 @@ class App extends Component {
 
         return (
             <>
-
                 <div className="bag-stars"></div>
                 <div className="animation-stats"></div>
                 <Header navActiv={navHeader}
                     funRenderLi={this.setNavHeader} />
                 <RandomPlanets />
                 <PagePerson />
-
+                
             </>
         )
 

@@ -27,7 +27,7 @@ const Header = ({ navActiv, funRenderLi }) => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 title">
-                        <img className="img-fluid" src={png} />
+                        <img className="img-fluid" src={png} alt="logo"/>
 
                     </div>
                     <div className="col-lg-6 nav">
@@ -38,7 +38,7 @@ const Header = ({ navActiv, funRenderLi }) => {
                         </nav>
                     </div>
                     <div className="col-lg-3">
-                        <img className="img-fluid" src={gif} />
+                        <img className="img-fluid" src={gif} alt="logo-left" />
                     </div>
                 </div>
             </div>

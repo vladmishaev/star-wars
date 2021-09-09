@@ -52,7 +52,7 @@ class RandomPlanets extends Component {
 
 
         let content = loading ? <Spiner /> : <PlanetView planet={planet} />;
-            content = error ? <Error /> : content;
+        content = error ? <Error /> : content;
 
 
         return (
@@ -71,13 +71,13 @@ class RandomPlanets extends Component {
 
 
 const PlanetView = ({ planet }) => {
-    const { id, name, population, ratationPeriod, diameter,img } = planet;
+    const { name, population, ratationPeriod, diameter, img } = planet;
 
     return (
         <>
             <div className="col-lg-3">
                 <div className="img-block">
-                    <img className="img-fluid" src={img} />
+                    <img className="img-fluid" src={img}  alt="rendom-planet"/>
                 </div>
             </div>
             <div className="col-lg-auto div-description">

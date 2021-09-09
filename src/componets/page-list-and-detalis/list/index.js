@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Spiner from '../../spiner';
-import Error from '../../error-indicator';
 import './index.css';
 
 
@@ -46,7 +45,7 @@ class ListEl extends Component {
     render() {
 
         const { items, louding } = this.state;
-        
+
         let content = (louding || items === null) ? <Spiner /> : this.renderItemElement(items);
 
 
